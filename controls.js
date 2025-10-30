@@ -32,7 +32,7 @@ class Controls {
 
     createVolumeControl(mediaPlayer) {
         const volume = document.createElement("div");
-        volume.className = "volume-control visible";
+        volume.className = "volume-control";
         const volumeIcon = document.createElement("span");
         volumeIcon.style.cursor = "pointer";
         volumeIcon.style.userSelect = "none";
@@ -116,7 +116,7 @@ class Controls {
 
     createTimerControls() {
         const timerControls = document.createElement("div");
-        timerControls.className = "timer-controls visible";
+        timerControls.className = "timer-controls";
         
         const timerLabel = document.createElement("span");
         timerLabel.textContent = "Auto-scroll: ";

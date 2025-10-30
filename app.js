@@ -133,6 +133,12 @@ class ShortsPlayer {
         const volumeControl = this.controls.createVolumeControl(this.mediaPlayer);
         const timerControls = this.controls.createTimerControls();
         
+        // Apply current visibility state to new controls
+        if (this.controls.isControlsVisible()) {
+            volumeControl.classList.add("visible");
+            timerControls.classList.add("visible");
+        }
+        
         this.container.appendChild(volumeControl);
         this.container.appendChild(timerControls);
 
@@ -199,6 +205,12 @@ class ShortsPlayer {
         // Create empty controls to maintain UI structure
         const volumeControl = this.controls.createVolumeControl(null);
         const timerControls = this.controls.createTimerControls();
+        
+        // Apply current visibility state to new controls
+        if (this.controls.isControlsVisible()) {
+            volumeControl.classList.add("visible");
+            timerControls.classList.add("visible");
+        }
         
         this.container.appendChild(noItemsMessage);
         this.container.appendChild(volumeControl);
