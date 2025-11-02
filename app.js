@@ -126,10 +126,10 @@ class ShortsPlayer {
         this.navigation.setCurrentIndex(index);
         const file = items[index];
         
-        // Create media element
+        // Create media element first
         const item = this.mediaPlayer.showItem(file);
         
-        // Create controls
+        // Create controls after media is displayed
         const volumeControl = this.controls.createVolumeControl(this.mediaPlayer);
         const timerControls = this.controls.createTimerControls();
         
@@ -139,6 +139,7 @@ class ShortsPlayer {
             timerControls.classList.add("visible");
         }
         
+        // Append controls to container (they should be positioned absolutely via CSS)
         this.container.appendChild(volumeControl);
         this.container.appendChild(timerControls);
 

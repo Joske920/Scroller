@@ -74,12 +74,14 @@ class MediaPlayer {
             video.currentTime = pos * video.duration;
         });
 
-        // Video control buttons
-        const videoControls = this.createVideoControls(video);
-
+        // Append video to item first so it has a parent
         item.appendChild(video);
         item.appendChild(progressWrapper);
+        
+        // Now create video controls (this needs video.parentElement to exist)
+        const videoControls = this.createVideoControls(video);
         item.appendChild(videoControls);
+        
         this.currentMedia = video;
 
         return video;
