@@ -42,6 +42,13 @@ class MediaPlayer {
         video.autoplay = true;
         video.loop = false;
         video.volume = this.globalVolume;
+        
+        // Ensure video is visible
+        video.style.display = "block";
+        video.style.visibility = "visible";
+        video.style.opacity = "1";
+        video.style.position = "relative";
+        video.style.zIndex = "1";
 
         // toggle pause/play on click
         video.addEventListener("click", () => {

@@ -38,6 +38,7 @@ body.hide-cursor {
   justify-content: center;
   flex-direction: column;
   position: relative;
+  overflow: visible;
 }
 
 video, img {
@@ -45,6 +46,11 @@ video, img {
   max-height: 100%;
   object-fit: contain;
   cursor: pointer;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  position: relative;
+  z-index: 1;
 }
 
 audio {
