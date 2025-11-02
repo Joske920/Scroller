@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug Scroller</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="pickerWrapper">
+    <label style="cursor:pointer;">
+      <input type="file" id="folderPicker" webkitdirectory multiple style="display:none">
+      📂 Pick media folder
+    </label>
+  </div>
+
+  <div id="container"></div>
+  
+  <!-- Debug console -->
+  <div id="debug" style="position: fixed; top: 0; right: 0; background: rgba(0,0,0,0.8); color: white; padding: 10px; max-width: 300px; z-index: 9999;">
+    <h4>Debug Info:</h4>
+    <div id="debugContent">Loading...</div>
+  </div>
+  
+  <!-- Load modules in correct order -->
+  <script>
+    // Add debug logging
+    window.onerror = function(msg, url, line, col, error) {
+      document.getElementById('debugContent').innerHTML += '<br>Error: ' + msg + ' at line ' + line;
+      return false;
+    };
+    
+    // Log when scripts load
+    console.log('Starting script loading...');
+  </script>
+  <script src="mediaPlayer.js"></script>
+  <script>console.log('MediaPlayer loaded');</script>
+  <script src="controls.js"></script>
+  <script>console.log('Controls loaded');</script>
+  <script src="navigation.js"></script>
+  <script>console.log('Navigation loaded');</script>
+  <script src="app.js"></script>
+  <script>
+    console.log('App loaded');
+    document.getElementById('debugContent').innerHTML = 'All scripts loaded successfully!';
+    
+    // Test if classes are available
+    setTimeout(() => {
+      try {
+        const testMediaPlayer = new MediaPlayer();
+        const testControls = new Controls(); 
+        const testNavigation = new Navigation();
+        document.getElementById('debugContent').innerHTML += '<br>All classes instantiated successfully!';
+      } catch(e) {
+        document.getElementById('debugContent').innerHTML += '<br>Class instantiation error: ' + e.message;
+      }
+    }, 100);
+  </script>
+</body>
+</html>
